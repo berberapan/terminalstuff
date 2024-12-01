@@ -1,0 +1,9 @@
+site_name: Terminal shenanigans
+nav:
+  - Start: index.md
+  - 1 - Shells: 1.md
+  - 2 - Låt oss sätta igång!: 2.md
+  - 3 - Echoes of wisdom: 3.md
+  - 4 - Alla dessa flaggor...: 4.md
+  - 5 - The cat's pajamas: 5.md
+theme: readthedocs
