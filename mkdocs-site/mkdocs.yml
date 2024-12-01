@@ -6,4 +6,4 @@ nav:
   - 3 - Echoes of wisdom: 3.md
   - 4 - Alla dessa flaggor...: 4.md
   - 5 - The cat's pajamas: 5.md
-theme: mkdocs-material
+theme: material
