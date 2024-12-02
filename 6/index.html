@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>6 - I Ragnar Östbergs anda - Terminal shenanigans</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "6 - I Ragnar \u00d6stbergs anda";
+        var mkdocs_page_input_path = "6.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Terminal shenanigans
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Start</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1/">1 - Shells</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2/">2 - Låt oss sätta igång!</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3/">3 - Echoes of wisdom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4/">4 - Alla dessa flaggor...</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5/">5 - The cat's pajamas</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">6 - I Ragnar Östbergs anda</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#skapa">Skapa</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#flyttaandra">Flytta/Ändra</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ta-bort">Ta bort</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sudo">Sudo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uppgift">Uppgift</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Terminal shenanigans</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">6 - I Ragnar Östbergs anda</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="i-ragnar-ostberg-anda">I Ragnar Östberg anda</h2>
+<p><strong>Uppgiter/4</strong> står på tur. </p>
+<p>I den här delen ska vi ta en titt på kommandon för att skapa, flytta och ta bort filer.</p>
+<hr />
+<h4 id="skapa">Skapa</h4>
+<p>Som vi såg i den förra delen så kan man skapa en fil genom redirection. Många saker går att göra på olika sätt, tack vare hur saker är byggda enligt Unix-filosofin.</p>
+<p>Det vanligaste sättet för att skapa en tom fil är dock att använda kommandot <strong>touch</strong>. Du behöver bara ange vilket filnamn du vill ha.
+Du behöver dessutom inte vara rädd för att skriva över något av filens innehåll om du anger ett filnamn som redan existerar. Det enda som händer i det fallet är att "senast ändrad"-tiden uppdateras till tiden du skrev kommandot.</p>
+<pre><code class="language-bash">touch filnamn.java
+</code></pre>
+<p>För att skapa en ny katalog (som sagt tidigare, kan lika gärna säga mapp), så använder vi kommandot <strong>mkdir</strong> (make directory). Du kan skapa flera undermappar samtidigt med -p flaggan.</p>
+<pre><code class="language-bash"># Skapa en ny katalog
+mkdir min_javakod
+
+# Skapa flera mappar i en förälderkatalog. Den skapas också om den inte redan existerar.
+mkdir -p min_javakod/{src,test}
+</code></pre>
+<hr />
+<h4 id="flyttaandra">Flytta/Ändra</h4>
+<p>För att flytta filer och kataloger använder vi kommandot <strong>mv</strong> (move). 
+Detta kommando används också för att byta namn på filer och kataloger. Kommandot är väldigt enkelt, först anger du källan och sedan destinationen.</p>
+<pre><code class="language-bash"># Flytta en fil till en katalog
+mv filnamn.java min_javakod/
+
+# Byta namn på en fil
+mv filnamn.java minjavafil.java
+
+# Flytta och byta namn samtidigt
+mv filnamn.java min_javakod/minjavafil.java
+</code></pre>
+<p>För att kopiera filer använder vi kommandot <strong>cp</strong> (copy). Det fungerar på liknande sätt som <strong>mv</strong>.</p>
+<pre><code class="language-bash"># Kopiera en fil
+cp filnamn.java minjavafil_kopia.java
+
+# Kopiera en fil till en annan katalog
+cp filnamn.java min_javakod/
+
+# Kopiera en hel katalog och dess innehåll (använd -r flaggan)
+cp -r min_javakod min_javakod_backup
+</code></pre>
+<hr />
+<h4 id="ta-bort">Ta bort</h4>
+<p>För att ta bort filer och kataloger används kommandot <strong>rm</strong> (remove). 
+Var försiktig med detta kommando eftersom filerna försvinner. 
+De flesta operativsystem har skydd för det nu men det var lätt att ta bort allt innehåll från en dator med ett enkel <code>rm -rf /</code> kommando förr (/ destinationen är roten för operativsystemet).</p>
+<pre><code class="language-bash"># Ta bort en fil
+rm filnamn.java
+
+# Ta bort en katalog och allt dess innehåll (recursive)
+rm -r min_javakod
+
+# Tvinga borttagning utan varningar (-f för force)
+rm -f känsligfil.java
+
+# Kombinera flaggor för att ta bort en katalog utan varningar
+rm -rf känslig_katalog
+</code></pre>
+<hr />
+<h4 id="sudo">Sudo</h4>
+<p>När man ska ändra i filer utanför hemkatalogen eller behöver utföra något annat systemkritiskt så kommer kommandot kräva att visa du har admin-rättigheter.
+Om du har det så kan du då använda <strong>sudo</strong> (superuser do). </p>
+<p>Ibland känns det som att lägga till <strong>sudo</strong> löser det mesta.</p>
+<p><img alt="xkcd sudo" src="../static/sudo.png" /></p>
+<p>Men var försiktig med hur du använder <strong>sudo</strong>. När du använder <strong>sudo</strong> för att installera något, exempelvis en nodejs modul, så ger du modulen adminbehörigheter (den har alltså full tillgång til ditt system).
+Så om du inte är säker på källan använd inte <strong>sudo</strong>, och fundera alltid på varför något kräver <strong>sudo</strong> innan du ger den några behörigheter.</p>
+<pre><code class="language-bash"># Installera ett program (exempel från Ubuntu/Debian)
+sudo apt install programnamn
+
+# Redigera en systemfil
+sudo nano /etc/hosts
+
+# Ta bort en skyddad fil
+sudo rm /var/log/systemfil.log
+
+# Skapa en katalog i systemet
+sudo mkdir /opt/mittprogram
+</code></pre>
+<hr />
+<h4 id="uppgift">Uppgift</h4>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../5/" class="btn btn-neutral float-left" title="5 - The cat's pajamas"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../5/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
