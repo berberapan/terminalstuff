@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>3 - Echoes of wisdom - Terminal shenanigans</title>
+    <title>9 - Vad kommer härnäst? - Terminal shenanigans</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "3 - Echoes of wisdom";
-        var mkdocs_page_input_path = "3.md";
+        var mkdocs_page_name = "9 - Vad kommer h\u00e4rn\u00e4st?";
+        var mkdocs_page_input_path = "9.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -51,14 +51,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../2/">2 - Låt oss sätta igång!</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">3 - Echoes of wisdom</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#uppgift">Uppgift</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#extra-info">Extra info</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3/">3 - Echoes of wisdom</a>
                 </li>
               </ul>
               <ul>
@@ -81,8 +75,16 @@
                 <li class="toctree-l1"><a class="reference internal" href="../8/">8 - Permission required</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../9/">9 - Vad kommer härnäst?</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">9 - Vad kommer härnäst?</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#linux-strukturen">Linux-strukturen</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#praktisk-ovning">Praktisk övning</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tack">Tack ❤️</a>
+    </li>
+    </ul>
                 </li>
               </ul>
       </div>
@@ -99,7 +101,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">3 - Echoes of wisdom</li>
+      <li class="breadcrumb-item active">9 - Vad kommer härnäst?</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -108,36 +110,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="echoes-of-wisdom">Echoes of wisdom</h2>
-<p>Vi borde nu befinna oss i <strong>Uppgifter/1</strong>. Försäkra dig att så är fallet genom att skriva <strong>pwd</strong>.</p>
-<p>På första sidan använde vi <strong>echo</strong>-kommandot för att se vilket shell-program som användes, men vi gick inte in på vad echo är.
-Echo är ett simpelt kommando som returnerar text. Om du anger en fil så returneras filnamnet, om du anger en sträng så returneras den.</p>
-<p>När vi kollade på vilket shell-program som användes så använde vi <code>echo $SHELL</code>. Här är $SHELL en variabel som innehåller sökvägen till den shell som terminalen använder.</p>
-<p>Du kan skapa dina egna variabler i terminalen. För att variabeln ska finnas i shell-miljön så måste <strong>export</strong> användas när du skapar den. </p>
-<pre><code class="language-bash">export min_variabel=&quot;super&quot;
-echo $min_variabel
-# Skriver ut super
-</code></pre>
-<h4 id="uppgift">Uppgift</h4>
-<p>Skapa en variabel med namn <strong>greeting</strong> och ge den värdet "Hello world".</p>
-<p>När du är klar kör: </p>
-<pre><code class="language-bash">bash test.sh
-</code></pre>
-<p>Detta kommer kontrollera att värdet är korrekt (kräver att du är i Uppgifter/1).</p>
-<p>Om den ger grönt, gå till nästa sida.</p>
+                <h2 id="vad-kommer-harnast">Vad kommer härnäst?</h2>
+<p>Vi har bara skrapat lite på ytan när det kommer till kommandon i terminalen. Så hur bör man fortsätta?</p>
+<h4 id="linux-strukturen">Linux-strukturen</h4>
+<p>Jag rekommenderar att du först kikar på hur strukturen ser ut i Linux. Det behöver inte vara så ingående, utan endast för att få lite övergripande kunskap.</p>
+<p>Titta exempelvis på en kort video som den här: <a href="https://www.youtube.com/watch?v=42iQKuQodW4">Fireship - Linux Directories Explained in 100 seconds</a></p>
 <hr />
-<h4 id="extra-info">Extra info</h4>
-<p>Varje ny terminal-session startar i en ny miljö, vilket betyder att dina variabler inte finns kvar från förra sessionen. Om du vill att en variabel alltid ska finnas tillgänglig måste export-kommandot köras varje gång du loggar in. Detta kan automatiseras genom att lägga till kommandot i shell-programmets inställningsfil.
-Om du är nyfiken kan du titta på denna inställningsfil (en så kallad dotfil) som ligger dold i din hemkatalog. För bash-användare:</p>
-<pre><code class="language-bash">cat ~/.bashrc
-</code></pre>
-<p>Detta är särskilt användbart när man till exempel vill lägga till program i systemets PATH.</p>
+<h4 id="praktisk-ovning">Praktisk övning</h4>
+<p>Om du vill testa på fler kommandon i mer avancerade miljöer så kan jag rekommendera att testa så kallade CTFs (Capture the Flag).
+<a href="https://overthewire.org/wargames/bandit/">Bandit</a> är en nybörjarvänlig version med många nivåer. Du måste exempelvis lära dig hur du ansluter till en
+annan dator med SSH för att starta.</p>
+<hr />
+<p>Men mitt bästa råd är bara att börja använda terminalen mer i vardagen. Ju mer du exponeras för och experimenterar med saker, desto mer kommer du lära dig.</p>
+<hr />
+<h4 id="tack">Tack ❤️</h4>
+<p><strong>Om du kom så här långt - tack för att du läste och hoppas det bidrog med något!</strong></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../2/" class="btn btn-neutral float-left" title="2 - Låt oss sätta igång!"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../4/" class="btn btn-neutral float-right" title="4 - Alla dessa flaggor...">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../8/" class="btn btn-neutral float-left" title="8 - Permission required"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -160,10 +152,8 @@ Om du är nyfiken kan du titta på denna inställningsfil (en så kallad dotfil)
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../8/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../4/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>3 - Echoes of wisdom - Terminal shenanigans</title>
+    <title>8 - Permission required - Terminal shenanigans</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "3 - Echoes of wisdom";
-        var mkdocs_page_input_path = "3.md";
+        var mkdocs_page_name = "8 - Permission required";
+        var mkdocs_page_input_path = "8.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -51,14 +51,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../2/">2 - Låt oss sätta igång!</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">3 - Echoes of wisdom</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#uppgift">Uppgift</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#extra-info">Extra info</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3/">3 - Echoes of wisdom</a>
                 </li>
               </ul>
               <ul>
@@ -77,8 +71,16 @@
                 <li class="toctree-l1"><a class="reference internal" href="../7/">7 - Mario Bros.</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../8/">8 - Permission required</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">8 - Permission required</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#chmod">chmod</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chown">chown</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uppgift">Uppgift</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -99,7 +101,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">3 - Echoes of wisdom</li>
+      <li class="breadcrumb-item active">8 - Permission required</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -108,36 +110,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="echoes-of-wisdom">Echoes of wisdom</h2>
-<p>Vi borde nu befinna oss i <strong>Uppgifter/1</strong>. Försäkra dig att så är fallet genom att skriva <strong>pwd</strong>.</p>
-<p>På första sidan använde vi <strong>echo</strong>-kommandot för att se vilket shell-program som användes, men vi gick inte in på vad echo är.
-Echo är ett simpelt kommando som returnerar text. Om du anger en fil så returneras filnamnet, om du anger en sträng så returneras den.</p>
-<p>När vi kollade på vilket shell-program som användes så använde vi <code>echo $SHELL</code>. Här är $SHELL en variabel som innehåller sökvägen till den shell som terminalen använder.</p>
-<p>Du kan skapa dina egna variabler i terminalen. För att variabeln ska finnas i shell-miljön så måste <strong>export</strong> användas när du skapar den. </p>
-<pre><code class="language-bash">export min_variabel=&quot;super&quot;
-echo $min_variabel
-# Skriver ut super
-</code></pre>
-<h4 id="uppgift">Uppgift</h4>
-<p>Skapa en variabel med namn <strong>greeting</strong> och ge den värdet "Hello world".</p>
-<p>När du är klar kör: </p>
-<pre><code class="language-bash">bash test.sh
-</code></pre>
-<p>Detta kommer kontrollera att värdet är korrekt (kräver att du är i Uppgifter/1).</p>
-<p>Om den ger grönt, gå till nästa sida.</p>
+                <h2 id="permission-required">Permission required</h2>
+<p>I <em>4 - Alla dessa flaggor...</em> sa vi att rättigheter är något vi kommer att gå igenom senare. Nu är senare.
+Hoppa in i <strong>Uppgifter/6</strong>.</p>
 <hr />
-<h4 id="extra-info">Extra info</h4>
-<p>Varje ny terminal-session startar i en ny miljö, vilket betyder att dina variabler inte finns kvar från förra sessionen. Om du vill att en variabel alltid ska finnas tillgänglig måste export-kommandot köras varje gång du loggar in. Detta kan automatiseras genom att lägga till kommandot i shell-programmets inställningsfil.
-Om du är nyfiken kan du titta på denna inställningsfil (en så kallad dotfil) som ligger dold i din hemkatalog. För bash-användare:</p>
-<pre><code class="language-bash">cat ~/.bashrc
+<p>Rättigheter är en viktig del av säkerhetssystemet. Det kan förhindra användare att av misstag ändra eller radera viktiga systemfiler eller att obehöriga kommer åt information
+de inte ska ha tillgång till. Det här är också anledningen till att <strong>sudo</strong> måste användas när du ska göra ändringar på filer utanför hemkatalogen (endast root-användare kan göra dessa ändringar).</p>
+<p><img alt="permissiontospeak" src="../static/freely3.png" /></p>
+<p>I Linux så kan du se rättigheter för en fil eller katalog genom att använda <strong>ls -la</strong>. Det är en 10-tecken lång sträng, den kan exempelvis se ut så här:</p>
+<p><strong>drwx------</strong></p>
+<p>Det första tecknet indikerar om det är en fil eller katalog. Om det är en fil så är första tecknet <strong>-</strong> och om det är en katalog <strong>d</strong>.
+De nio nästkommande tecken är tre uppsättningar av rwx. Om det finns ett <strong>-</strong> tecken på de efterföljande nio betyder det att rättigheten saknas.</p>
+<ul>
+<li>r står för Read </li>
+<li>w står för Write </li>
+<li>x för Execute</li>
+</ul>
+<p>De tre uppsättningarna är, i ordning: ägare, grupp och övriga. Baserat på vilken av dessa tre man är en del av avgör om du kan läsa, skriva eller köra en fil.</p>
+<p>I exemplet ovan så har endast ägaren fulla rättigheter för katalogen och ingen av de andra grupperna kan göra något med den.</p>
+<hr />
+<h4 id="chmod">chmod</h4>
+<p>Det här är ett kommando som tillåter dig att ändra rättigheter för en fil eller katalog. Syntaxet kan skrivas på lite olika sätt.
+Uppsättningarna förkortas till ugo (user (ägaren), group, others)</p>
+<pre><code class="language-bash"># Lägga till execute för user
+chmod u+x filen.txt
+
+# Ta bort write för others
+chmod o-r filen.txt
+
+# Lägga till read för alla uppsättningarna
+chmod +r filen.txt
 </code></pre>
-<p>Detta är särskilt användbart när man till exempel vill lägga till program i systemets PATH.</p>
+<p>Man kan även ändra på rättigheterna med siffror. x = 1, w = 2 och r = 4. Addera siffrorna för varje uppsättning.
+Så om jag vill att alla ska ha fulla rättigheter till en fil kan jag skriva <code>chmod 777 filen.txt</code>. Alternativt kanske jag vill ha fulla rättigheter för ägaren men
+inga rättigheter för others och att group bara ska kunna läsa, då kan jag skriva <code>chmod 720 filen.txt</code>.</p>
+<hr />
+<h4 id="chown">chown</h4>
+<p>Detta kommando kräver att du är super-user så sudo kommer att efterfrågas. Det kommandot gör är att ändra ägare av en fil eller katalog.</p>
+<pre><code class="language-bash"># Ändra ägare
+sudo chown ny_ägare filnamn
+
+# Ändra både ägare och grupp
+sudo chown ny_ägare:ny_grupp filnamn
+
+# Ändra endast grupp
+sudo chown :ny_grupp filnamn
+</code></pre>
+<hr />
+<h4 id="uppgift">Uppgift</h4>
+<p>Starta uppgiften med <code>bash test.sh</code></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../2/" class="btn btn-neutral float-left" title="2 - Låt oss sätta igång!"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../4/" class="btn btn-neutral float-right" title="4 - Alla dessa flaggor...">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../7/" class="btn btn-neutral float-left" title="7 - Mario Bros."><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../9/" class="btn btn-neutral float-right" title="9 - Vad kommer härnäst?">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -160,10 +187,10 @@ Om du är nyfiken kan du titta på denna inställningsfil (en så kallad dotfil)
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../7/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../4/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../9/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

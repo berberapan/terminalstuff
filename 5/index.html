@@ -62,6 +62,12 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">5 - The cat's pajamas</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#output-redirection-overwrite">Output redirection overwrite (&gt;)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#output-redirection-append">Output redirection append (&gt;&gt;)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#input-redirection">Input redirection</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#uppgift">Uppgift</a>
     </li>
     </ul>
@@ -69,6 +75,18 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../6/">6 - I Ragnar Östbergs anda</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7/">7 - Mario Bros.</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8/">8 - Permission required</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../9/">9 - Vad kommer härnäst?</a>
                 </li>
               </ul>
       </div>
@@ -111,18 +129,20 @@ Skriv program för att hantera textflöden eftersom det är ett universellt grä
 </blockquote>
 <p><strong>cat</strong> gör sin sak väldigt bra, och eftersom den följer Unix-filosofin så interagerar den väldigt bra med andra kommandon och system.
 För att demonstrera det så kan vi använda något som kallas 'redirects' i terminalen, bland annat <strong>&gt;</strong>, <strong>&gt;&gt;</strong> och <strong>&lt;</strong>. Nedan använder vi de två första tillsammans med <strong>cat</strong>, <strong>&lt;</strong> är något som inte riktigt behövs med kommandona vi har lärt oss hittills men är bra att förstå.</p>
-<p><strong>Output redirection overwrite (&gt;)</strong></p>
+<h4 id="output-redirection-overwrite">Output redirection overwrite (&gt;)</h4>
 <p><strong>&gt;</strong> används för att skriva output till en fil. Om filen redan existerar så skriver man över den (så håll tungan rätt i mun och kontrollera att du skrivit rätt filnamn). I exemplet nedan så skrivs det som finns i fil1 och fil2 in tillsammans i en ny tredje fil.</p>
 <pre><code class="language-bash">cat fil1.txt fil2.txt &gt; fil3.txt
 </code></pre>
 <p>Det är inte bara <strong>cat</strong> som du kan använda det här för. Allt som har en output kan användas, exempelvis <strong>echo</strong> som vi tagit upp tidigare kan du använda för att skapa en ny fil med det som den printar.</p>
 <pre><code class="language-bash">echo $PATH &gt; minpath.txt
 </code></pre>
-<p><strong>Output redirection append (&gt;&gt;)</strong></p>
+<hr />
+<h4 id="output-redirection-append">Output redirection append (&gt;&gt;)</h4>
 <p><strong>&gt;&gt;</strong> fungerar som overwrite men lägger istället till output till filen. Exemplet nedan gör att innehållet från fil2 läggs till fil1 istället för att skapa en ny fil.</p>
 <pre><code class="language-bash">cat fil2.txt &gt;&gt; fil1.txt
 </code></pre>
-<p><strong>Input redirection</strong></p>
+<hr />
+<h4 id="input-redirection">Input redirection</h4>
 <p><strong>&lt;</strong> matar in innehållet från en fil till ett kommando. Som jag nämnde ovan är det lite överflödigt för det vi jobbat med hittills så jag passar på att introducera två nya kommandon här.</p>
 <p>Vi kan testa detta med kommandot <strong>wc</strong> (word count) som räknar rader, ord och tecken i en fil. Med flaggan -l räknar vi rader.</p>
 <pre><code class="language-bash">wc -l &lt; fil1.txt
@@ -139,6 +159,7 @@ Vad är då skillnaden? Varför ens använda input redirection?</p>
 <pre><code class="language-bash">sort &lt; emails.txt &gt; sorterade_emails.txt
 </code></pre>
 <p>Precis som tidigare exempel så går det bra att skriva utan input redirection här då sort kan hantera filnamn utan problem.</p>
+<hr />
 <h4 id="uppgift">Uppgift</h4>
 <p>Starta genom att skriva <code>bash test.sh</code> som vanligt.</p>
               

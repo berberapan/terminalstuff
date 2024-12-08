@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>7 - Mario Bros. - Terminal shenanigans</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "7 - Mario Bros.";
+        var mkdocs_page_input_path = "7.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Terminal shenanigans
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Start</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../1/">1 - Shells</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../2/">2 - Låt oss sätta igång!</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../3/">3 - Echoes of wisdom</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../4/">4 - Alla dessa flaggor...</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../5/">5 - The cat's pajamas</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../6/">6 - I Ragnar Östbergs anda</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">7 - Mario Bros.</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#piping">Piping</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#grep">grep</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#find">find</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#man">man</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kill">kill</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uppgift">Uppgift</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8/">8 - Permission required</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../9/">9 - Vad kommer härnäst?</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Terminal shenanigans</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">7 - Mario Bros.</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="mario-bros">Mario Bros.</h2>
+<p>Nu ska vi komma igång med lite rörmokarjobb. Vi hoppar vidare till <strong>Uppgifter/5</strong>.</p>
+<h4 id="piping">Piping</h4>
+<p>I terminalen så kan man skicka vidare data och kedja ihop det med andra kommandon. Det som används för att kedja ihop kommandon är
+det så kallade pipe-tecknet <strong>|</strong>.</p>
+<p>Vi tar och tittar på ett par exempel.</p>
+<pre><code class="language-bash"># Se hur många filer det finns i en katalog
+# Listar alla filer och skickar det vidare till wc som räknar rader
+ls -a | wc -l 
+
+# Kombinera två filers data, sortera, behåll endast unika och skapa sedan en fil med datan
+cat email1.txt email2.txt | sort | uniq &gt; combined_emails.txt
+</code></pre>
+<p>Som du kanske ser så kan man kedja ihop fler än två kommandon. Du kan kedja på hur mycket du vill och känner för. Flödet i en sådan här kedja går alltid från vänster till höger, precis som en stream i Java.</p>
+<hr />
+<h4 id="grep">grep</h4>
+<p>Det här är ett kommando som är perfekt till kedjanden. Tänk dig att du använder en funktion som fungerar som en Ctrl + F i Windows
+men har många fler funktioner du kan lägga på med flaggor. <strong>grep</strong> använder sig av regex och det är också vad re i kommandot står för, g:et är för global
+och p:et för print. Du kan söka i filer och output från andra kommandon vilket gör det väldigt användbart för piping.</p>
+<pre><code class="language-bash"># Skriver ut alla filer som innehåller 'test' från listan
+ls -l | grep test 
+
+# Skriver ut alla rader med ordet 'hej' i fil.txt
+grep hej fil.txt
+
+# Skriver ut alla rader med ordet 'hej' i all txt-filer
+grep hej *.txt
+</code></pre>
+<p>Ett par användbara flaggor för <strong>grep</strong>, är -c som räknar hur många gånger något förekommer och -i som ignorerar versaler/gemener.
+En annan nyttig flagga är -r som gör sökningen rekursivt, <code>grep -r hej .</code> söker igenom alla filer i katalogen du befinner dig i.</p>
+<hr />
+<h4 id="find">find</h4>
+<p>Ytterligare ett kommando som är väldigt användbart. Som namnet antyder så hjälper kommandot dig att hitta filer och kataloger i ditt system.
+Du kan söka på parametrar som namn, storlek, typ, ålder, ägare etc.</p>
+<pre><code class="language-bash"># Söker genom katalogen du är i och alla underkataloger till den efter en fil med namnet 'fil1.txt'
+find . -name &quot;fil1.txt&quot;
+
+# Söker igenom hemkatalogen och alla dess underkataloger efter alla HTML-filer
+find ~ -name &quot;*.html&quot;
+
+# Söker igenom hemkatalogen och dess direkta underkataloger (ett steg) efter alla HTML-filer
+find ~ -maxdepth 2 -name &quot;*.html&quot;
+
+# Söker igenom hela systemet efter alla filer (f för filer, d för kataloger)
+find / -type f
+
+# Söker igenom din nuvarande katalog och underkataloger efter filer som är större än 500mb.
+find . -size +500m
+
+</code></pre>
+<p>Det finns flera sökalternativ än det här. Kika gärna på manualen om det är något du behöver söka på men du inte riktigt är säker på hur.
+Mer om manualer nedan.</p>
+<hr />
+<h4 id="man">man</h4>
+<p>De flesta kommandon har en manual och den når du med det här kommandot. Hjälp-flaggan (--help) kan ofta ge dig svar på vad
+olika flaggor gör men om du vill ha mer utförlig information så är det här kommandot du vill använda dig av.</p>
+<p>Du har kanske hört uttrycket RTFM (Read the friggin' manual), och det är något jag rekommenderar att du gör om du har frågor kring
+ett kommando. Du kan även använda grep om du söker efter en speciell del, alternativt gå in i manualen och söka på något
+genom att först trycka <strong>/</strong> och sen skriva sökordet. Om du gör en /-sökning så tar du dig till nästa träff genom att trycka på 'n'.
+Du tar dig ur manualen genom att trycka på 'q'.</p>
+<hr />
+<h4 id="kill">kill</h4>
+<p>Ibland behöver du döda/avsluta processer. Det lättaste sättet att göra det på är ofta att använda kortkommandot <strong>ctrl + c</strong> i terminalen.
+<strong>Ctrl + c</strong> är något som är bra att lägga på minnet, säg till exempel att du vill avsluta processen som kör en server eller liknande.
+Ibland går det dock inte att avsluta processer med det kortkommandot och då använder man sig av <strong>kill</strong>.</p>
+<p><strong>Kill</strong> kan avsluta processer på olika sättet.</p>
+<pre><code class="language-bash"># Skickar en signal som ber något att avsluta (SIGTERM)
+kill PID
+
+# Skickar en 'interrupt'-signal. Samma sak som ctrl + c (SIGINT)
+kill -2 PID
+
+# Forcerat avslut. Kan inte ignoreras och dödar processen direkt. (SIGKILL)
+kill -9 PID
+</code></pre>
+<p>PID som används ovan är en process ID. Du kan få tag på processers ID genom att använda <strong>ps</strong>-kommandot. Om du likt
+aktivitetshanteraren i Windows vill ha en lista på alla processer så kan du skriva <code>ps aux</code>, vilket är superbra att kombinera
+med ett visst <strong>grep</strong> kommando för att få fram processen du är intresserad av.</p>
+<hr />
+<h4 id="uppgift">Uppgift</h4>
+<p><code>bash test.sh</code></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../6/" class="btn btn-neutral float-left" title="6 - I Ragnar Östbergs anda"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../8/" class="btn btn-neutral float-right" title="8 - Permission required">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../6/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../8/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

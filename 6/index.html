@@ -74,9 +74,25 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#sudo">Sudo</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#wildcard">Wildcard</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#allmana-tips">Allmäna tips</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#uppgift">Uppgift</a>
     </li>
     </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../7/">7 - Mario Bros.</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../8/">8 - Permission required</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../9/">9 - Vad kommer härnäst?</a>
                 </li>
               </ul>
       </div>
@@ -102,7 +118,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="i-ragnar-ostberg-anda">I Ragnar Östberg anda</h2>
+                <h2 id="i-ragnar-ostbergs-anda">I Ragnar Östbergs anda</h2>
 <p><strong>Uppgiter/4</strong> står på tur. </p>
 <p>I den här delen ska vi ta en titt på kommandon för att skapa, flytta och ta bort filer.</p>
 <hr />
@@ -112,11 +128,11 @@
 Du behöver dessutom inte vara rädd för att skriva över något av filens innehåll om du anger ett filnamn som redan existerar. Det enda som händer i det fallet är att "senast ändrad"-tiden uppdateras till tiden du skrev kommandot.</p>
 <pre><code class="language-bash">touch filnamn.java
 </code></pre>
-<p>För att skapa en ny katalog (som sagt tidigare, kan lika gärna säga mapp), så använder vi kommandot <strong>mkdir</strong> (make directory). Du kan skapa flera undermappar samtidigt med -p flaggan.</p>
+<p>För att skapa en ny katalog (som sagt tidigare, kan lika gärna säga mapp), så använder vi kommandot <strong>mkdir</strong> (make directory). Du kan skapa flera underkataloger samtidigt med -p flaggan.</p>
 <pre><code class="language-bash"># Skapa en ny katalog
 mkdir min_javakod
 
-# Skapa flera mappar i en förälderkatalog. Den skapas också om den inte redan existerar.
+# Skapa flera kataloger i en förälderkatalog. Den skapas också om den inte redan existerar.
 mkdir -p min_javakod/{src,test}
 </code></pre>
 <hr />
@@ -145,8 +161,8 @@ cp -r min_javakod min_javakod_backup
 <hr />
 <h4 id="ta-bort">Ta bort</h4>
 <p>För att ta bort filer och kataloger används kommandot <strong>rm</strong> (remove). 
-Var försiktig med detta kommando eftersom filerna försvinner. 
-De flesta operativsystem har skydd för det nu men det var lätt att ta bort allt innehåll från en dator med ett enkel <code>rm -rf /</code> kommando förr (/ destinationen är roten för operativsystemet).</p>
+Var försiktig med detta kommando eftersom filerna försvinner helt och hållet (ingen paperskorg eller liknande här). 
+De flesta moderna operativsystem har skydd mot detta nu men det var till och med lätt att ta bort allt innehåll från en dator med ett enkelt <code>rm -rf /</code> kommando förr (/ destinationen är roten för operativsystemet).</p>
 <pre><code class="language-bash"># Ta bort en fil
 rm filnamn.java
 
@@ -161,11 +177,11 @@ rm -rf känslig_katalog
 </code></pre>
 <hr />
 <h4 id="sudo">Sudo</h4>
-<p>När man ska ändra i filer utanför hemkatalogen eller behöver utföra något annat systemkritiskt så kommer kommandot kräva att visa du har admin-rättigheter.
+<p>När man ska ändra i filer utanför hemkatalogen eller behöver utföra något annat systemkritiskt så kommer kommandot kräva att visa att du har admin-rättigheter.
 Om du har det så kan du då använda <strong>sudo</strong> (superuser do). </p>
 <p>Ibland känns det som att lägga till <strong>sudo</strong> löser det mesta.</p>
 <p><img alt="xkcd sudo" src="../static/sudo.png" /></p>
-<p>Men var försiktig med hur du använder <strong>sudo</strong>. När du använder <strong>sudo</strong> för att installera något, exempelvis en nodejs modul, så ger du modulen adminbehörigheter (den har alltså full tillgång til ditt system).
+<p>Men var försiktig med hur du använder <strong>sudo</strong>. När du använder <strong>sudo</strong> för att installera något, exempelvis en nodejs modul, så ger du modulen adminbehörigheter (den har alltså full tillgång till ditt system).
 Så om du inte är säker på källan använd inte <strong>sudo</strong>, och fundera alltid på varför något kräver <strong>sudo</strong> innan du ger den några behörigheter.</p>
 <pre><code class="language-bash"># Installera ett program (exempel från Ubuntu/Debian)
 sudo apt install programnamn
@@ -180,12 +196,51 @@ sudo rm /var/log/systemfil.log
 sudo mkdir /opt/mittprogram
 </code></pre>
 <hr />
+<h4 id="wildcard">Wildcard</h4>
+<p>När du använder kommandon som inte behöver en specifik adress till en fil så kan du använda ett så kallat 'wildcard.'
+Säg att du exempelvis vill ta bort alla java-filer i en mapp.</p>
+<pre><code class="language-bash">rm javaprojekt/src/*.java
+</code></pre>
+<p>Allt som avslutas med .java kommer att tas bort i src-katalogen i exemplet. Du kan sätta asterisken efter lite text också.</p>
+<pre><code class="language-bash"># Tar bort alla filer med controller i namnet.
+rm javaprojekt/src/*controller*
+
+# Tar bort alla filer som börjar med fil
+rm javaprojekt/src/fil*
+</code></pre>
+<p>Ett wildcard för ett tecken gör man med <strong>?</strong>. </p>
+<pre><code class="language-bash"># Matchar filer som fil-1.txt och fil-A.txt men inte med fil-12.txt
+ls fil?.txt
+</code></pre>
+<p>För att matcha mer än ett tecken på en position kan man använda []. Ranges för både bokstäver och siffror fungerar. Du kan även matcha med tecken som inte finns med ett !.</p>
+<pre><code class="language-bash"># Listar alla txt-filer som börjar med fil1, fil2 eller fil3. fil4 inkluderas exempelvis inte.
+ls fil[1-3].txt
+
+# Samma sak med bokstäver.
+ls fil[a-c].txt
+
+# Om jag vill lista alla txt-filer förutom 1 till 3.
+ls fil[!1-3].txt
+</code></pre>
+<p>Man kan även kombinera olika wildcards. <code>ls -l [A-C]*.java</code> listar alla java-filer som börjar på A till C.</p>
+<hr />
+<h4 id="allmana-tips">Allmäna tips</h4>
+<p>Du kanske har noterat att tecken som ! och ? kan vara symboler du vill använda i text.</p>
+<p>Säg att vi skulle haft <code>Hello world!</code> i den första uppgiften istället för <code>Hello world</code> då hade man varit tvungen att använda
+ett escape-tecken (\) och skriva det så här <code>export greeting=Hello world\!</code>.</p>
+<p>Ett annat litet tips är att du kan kombinera kommandon genom att skriva &amp;&amp;. Här under så flyttar jag mig till hemkatalogen och skapar
+katalogen 'nytt' i den på en och samma rad.</p>
+<pre><code class="language-bash">cd ~ &amp;&amp; mkdir nytt
+</code></pre>
+<hr />
 <h4 id="uppgift">Uppgift</h4>
+<p>Starta genom <code>bash test.sh</code> som vanligt.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../5/" class="btn btn-neutral float-left" title="5 - The cat's pajamas"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../7/" class="btn btn-neutral float-right" title="7 - Mario Bros.">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -210,6 +265,8 @@ sudo mkdir /opt/mittprogram
     
       <span><a href="../5/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../7/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
